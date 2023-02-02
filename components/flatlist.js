@@ -8,6 +8,8 @@ import {
   Text,
   StatusBar,
   Image,
+  ScrollView,
+  VirtualizedList,
 } from "react-native";
 
 const Item = ({ props }) => {
@@ -26,45 +28,36 @@ const FlatListView = () => {
       setDummyData(response.data.products);
     });
   }, []);
+  dummyData.sort();
   return (
     <SafeAreaView style={styles.container}>
-      <FlatList
-        data={dummyData}
-        renderItem={({ item }) => <Item props={item} />}
-        keyExtractor={(item) => item.id}
-        horizontal
-        // horizontal
-        // numColumns={2}
-        // ItemSeparatorComponent={(props) => {
-        //   console.log("props", props); // here you can access the trailingItem with props.trailingItem
-        //   return (
-        //     <View
-        //       style={{
-        //         height: 5,
-        //         backgroundColor: props.highlighted ? "green" : "gray",
-        //       }}
-        //     />
-        //   );
-        // }}
-      />
-      <FlatList
-        data={dummyData}
-        renderItem={({ item }) => <Item props={item} />}
-        keyExtractor={(item) => item.id}
-        // horizontal
-        // numColumns={2}
-        // ItemSeparatorComponent={(props) => {
-        //   console.log("props", props); // here you can access the trailingItem with props.trailingItem
-        //   return (
-        //     <View
-        //       style={{
-        //         height: 5,
-        //         backgroundColor: props.highlighted ? "green" : "gray",
-        //       }}
-        //     />
-        //   );
-        // }}
-      />
+      <ScrollView>
+        <FlatList
+          data={dummyData}
+          renderItem={({ item }) => <Item props={item} />}
+          keyExtractor={(item) => item.id}
+          horizontal
+        />
+
+        <FlatList
+          data={dummyData}
+          renderItem={({ item }) => <Item props={item} />}
+          keyExtractor={(item) => item.id}
+          //   horizontal
+          //   numColumns={2}
+          //   ItemSeparatorComponent={(props) => {
+          //     console.log("props", props); // here you can access the trailingItem with props.trailingItem
+          //     return (
+          //       <View
+          //         style={{
+          //           height: 5,
+          //           backgroundColor: props.highlighted ? "green" : "gray",
+          //         }}
+          //       />
+          //     );
+          //   }}
+        />
+      </ScrollView>
     </SafeAreaView>
   );
 };

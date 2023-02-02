@@ -15,30 +15,39 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import FlatListView from "./components/flatlist";
+import List from "./components/list";
 import { Ionicons } from "@expo/vector-icons";
 import { createDrawerNavigator } from "@react-navigation/drawer";
-
-function HomeScreen({ navigation }) {
+import LoadingPage from "./components/loadingPage";
+function HomeScreen(props) {
+  console.log(props.route.params);
   return (
     <SafeAreaView>
+      {/* <LoadingPage /> */}
       <FlatListView />
     </SafeAreaView>
   );
 }
-function ContactScreen({ navigation }) {
+function ListScreen({ navigation }) {
   return (
     <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
-      <Text>Contact Screen</Text>
-      <Button
-        title="Go to Contact... again"
-        onPress={() => navigation.push("Contact")}
+      <List />
+      {/* <Button
+        title="Go to List... again"
+        onPress={() => navigation.push("List")}
       />
       <Button title="Go to Home" onPress={() => navigation.navigate("Home")} />
-      <Button title="Go back" onPress={() => navigation.goBack()} />
+      <Button title="Go back" onPress={() => navigation.goBack()} /> */}
     </View>
   );
 }
 function MyTabs() {
+  const [dummyData, setDummyData] = useState([]);
+  useEffect(() => {
+    axios.get("https://dummyjson.com/products").then((response) => {
+      setDummyData(response.data.products);
+    });
+  }, []);
   return (
     <Tab.Navigator
       screenOptions={({ route }) => ({
@@ -52,6 +61,7 @@ function MyTabs() {
       <Tab.Screen
         name="Home"
         component={HomeScreen}
+        initialParams={{ dummyData: "ahahahah" }}
         options={{
           headerLeft: () => (
             <Button onPress={() => alert("STFU!")} title="LOL" color="black" />
@@ -66,7 +76,7 @@ function MyTabs() {
           ),
         }}
       />
-      <Tab.Screen name="Contact" component={ContactScreen} />
+      <Tab.Screen name="List" component={ListScreen} />
     </Tab.Navigator>
   );
 }
@@ -98,13 +108,13 @@ const App = () => {
             ),
           }}
         />
-        <Stack.Screen name="Contact" component={ContactScreen} />
+        <Stack.Screen name="List" component={ListScreen} />
       </Stack.Navigator> */}
       {/* <Drawer.Navigator initialRouteName="Home">
         <Drawer.Screen name="Home" component={HomeScreen} />
-        <Drawer.Screen name="Contact" component={ContactScreen} />
+        <Drawer.Screen name="List" component={ListScreen} />
       </Drawer.Navigator> */}
-      {/* <MyTabs /> */}
+      <MyTabs />
     </NavigationContainer>
   );
 };
