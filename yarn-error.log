@@ -1,8 +1,8 @@
 Arguments: 
-  /opt/homebrew/Cellar/node/19.6.0/bin/node /usr/local/bin/yarn run build
+  /opt/homebrew/Cellar/node/19.6.0/bin/node /usr/local/bin/yarnpkg add expo-splash-screen@~0.17.5
 
 PATH: 
-  /Users/chinkhchinkhuslenuslen/.rbenv/shims:/opt/homebrew/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/Apple/usr/bin:/Users/chinkhchinkhuslenuslen/.rbenv/shims:/opt/homebrew/bin:/opt/homebrew/sbin:/Users/chinkhchinkhuslenuslen/Library/Android/sdk/emulator:/Users/chinkhchinkhuslenuslen/Library/Android/sdk/platform-tools:/Users/chinkhchinkhuslenuslen/Library/Android/sdk/emulator:/Users/chinkhchinkhuslenuslen/Library/Android/sdk/platform-tools
+  /Users/chinkhchinkhuslenuslen/Desktop/IOS-App/node_modules/.bin:/Users/chinkhchinkhuslenuslen/Desktop/IOS-App/node_modules/.bin:/Users/chinkhchinkhuslenuslen/Desktop/node_modules/.bin:/Users/chinkhchinkhuslenuslen/node_modules/.bin:/Users/node_modules/.bin:/node_modules/.bin:/opt/homebrew/lib/node_modules/npm/node_modules/@npmcli/run-script/lib/node-gyp-bin:/Users/chinkhchinkhuslenuslen/.rbenv/shims:/opt/homebrew/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/Apple/usr/bin:/Users/chinkhchinkhuslenuslen/.rbenv/shims:/opt/homebrew/bin:/opt/homebrew/sbin:/Users/chinkhchinkhuslenuslen/Library/Android/sdk/emulator:/Users/chinkhchinkhuslenuslen/Library/Android/sdk/platform-tools:/Users/chinkhchinkhuslenuslen/Library/Android/sdk/emulator:/Users/chinkhchinkhuslenuslen/Library/Android/sdk/platform-tools
 
 Yarn version: 
   1.22.19
@@ -14,12 +14,7 @@ Platform:
   darwin arm64
 
 Trace: 
-  SyntaxError: /Users/chinkhchinkhuslenuslen/Desktop/IOS-App/package.json: Expected ',' or '}' after property value in JSON at position 226
-      at JSON.parse (<anonymous>)
-      at /usr/local/lib/node_modules/yarn/lib/cli.js:1629:59
-      at Generator.next (<anonymous>)
-      at step (/usr/local/lib/node_modules/yarn/lib/cli.js:310:30)
-      at /usr/local/lib/node_modules/yarn/lib/cli.js:321:13
+  Error: EACCES: permission denied, mkdir '/Users/chinkhchinkhuslenuslen/Desktop/IOS-App/node_modules/@expo/json-file/node_modules/json5'
 
 npm manifest: 
   {
@@ -30,7 +25,7 @@ npm manifest:
       "android": "expo run:android",
       "ios": "expo run:ios",
       "web": "expo start --web",
-      "build": "babel src -d lib"s
+      "build": "babel src -d lib"
     },
     "dependencies": {
       "@expo/vector-icons": "^13.0.0",
